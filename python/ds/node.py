@@ -13,6 +13,10 @@ class Node:
         return list(self.adj.keys())
 
     def getDistance(self, node: 'Node') -> int:
+        """
+        Gets the distance from `self` to `node`
+        If `node` isn't adjacent to `self` then the distance will be `sys.maxsize`
+        """
         import sys
         res = self.adj.get(node)
         return res if res is not None else sys.maxsize

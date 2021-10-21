@@ -67,13 +67,46 @@ def breadth_first_search(
 
     return path
 
+# OLD
+#def uniform_cost_search(graph: Graph, start: str, goal: str) -> List[Node]:
+#    def expand(node: Node) -> List[Node]:
+#        nodes = node.getAdjacents()
+#        nodes.sort(key=lambda n: node.getDistance(n))
+#        return nodes
+#
+#    def select(nodes: List[Node]) -> Node:
+#        return nodes.pop()
+#
+#    return breadth_first_search(graph, start, goal, expand, select) # type: ignore
+
 def uniform_cost_search(graph: Graph, start: str, goal: str) -> List[Node]:
-    def expand(node: Node) -> List[Node]:
-        nodes = node.getAdjacents()
-        nodes.sort(key=lambda n: node.getDistance(n))
-        return nodes
+    path = []
+    root = graph.getNode(start)
+    frontier = [root]
+    exl = set()
+    prev = {}
+    
+    while frontier != []:
+        #select
+        current = frontier.pop()
 
-    def select(nodes: List[Node]) -> Node:
-        return nodes.pop()
+        if current is not None and current not in exl:
+            #expansion
+            expanded = current.getAdjacents()
+            expanded.sort(key=lambda n: current.getDistance(n))
 
-    return breadth_first_search(graph, start, goal, expand, select) # type: ignore
+            for node in expanded:
+                if prev.get(node) is None:
+                    prev[node] = current
+
+            exl.add(current)
+
+            if current.label == goal:
+                while current != root:
+                    path.insert(0, current)
+                    current = prev[current]
+                path.insert(0, current)
+                return path
+
+            frontier.extend(expanded)
+    return path

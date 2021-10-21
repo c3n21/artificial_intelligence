@@ -3,12 +3,16 @@ from typing import List, Optional
 from .node import Node
 
 class Graph:
-    """Graph not oriented"""
-    def __init__(self, nodes: List[Node]) -> None:
-        self.nodes    = set(nodes)
+    """
+    Undirected graph implementation
+    """
 
-    def addEdge(self, v: Node, u: Node, d: int) -> bool:
-        return v.addAdjancent(u, d) and u.addAdjancent(v, d)
+    def __init__(self, nodes: List[Node]) -> None:
+        self.nodes = set(nodes)
+
+    def addEdge(self, src: Node, dst: Node, weight: int) -> bool:
+        """Adds and edge to from `src` to `dst` with `weight`"""
+        return src.addAdjancent(dst, weight) and dst.addAdjancent(src, weight)
 
     def getNode(self, label: str) -> Optional[Node]:
         for node in self.nodes:
