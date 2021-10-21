@@ -12,6 +12,11 @@ class Node:
     def getAdjacents(self) -> List['Node']:
         return list(self.adj.keys())
 
+    def getDistance(self, node: 'Node') -> int:
+        import sys
+        res = self.adj.get(node)
+        return res if res is not None else sys.maxsize
+
     def __str__(self) -> str:
         return f"Node '{self.label}'"
 

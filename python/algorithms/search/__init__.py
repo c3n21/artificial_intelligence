@@ -67,6 +67,13 @@ def breadth_first_search(
 
     return path
 
-def uniform_cost_search(graph: Graph) -> None:
+def uniform_cost_search(graph: Graph, start: str, goal: str) -> List[Node]:
+    def expand(node: Node) -> List[Node]:
+        nodes = node.getAdjacents()
+        nodes.sort(key=lambda n: node.getDistance(n))
+        return nodes
 
-    pass
+    def select(nodes: List[Node]) -> Node:
+        return nodes.pop()
+
+    return breadth_first_search(graph, start, goal, expand, select) # type: ignore

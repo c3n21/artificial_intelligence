@@ -1,7 +1,8 @@
 from typing import List
 from python.ds.graph import Graph
 from python.ds.node import Node
-from python.algorithms.search import breadth_first_search, depth_first_search
+from python.algorithms.search import breadth_first_search, depth_first_search, \
+    uniform_cost_search
 
 if __name__ == "__main__":
     start = Node("A")
@@ -33,5 +34,7 @@ if __name__ == "__main__":
     def select_bfs(nodes: List[Node]) -> Node:
         return nodes.pop()
 
-    print(f"Path BFS = \
-    {breadth_first_search(graph, start.label, e.label, expand_bfs, select_bfs )}") # type: ignore
+#    print(f"Path BFS = \
+#    {breadth_first_search(graph, start.label, e.label, expand_bfs, select_bfs )}") # type: ignore
+
+    print(f"Path UCS = {uniform_cost_search(graph, start.label, e.label)}")
