@@ -1,6 +1,6 @@
-from ds.graph import Graph
-from ds.node import Node
-from algorithms.search.search import breadth_first_search, depth_first_search
+from python.ds.graph import Graph
+from python.ds.node import Node
+from python.algorithms.search.search import breadth_first_search, depth_first_search
 
 if __name__ == "__main__":
     start = Node("A")

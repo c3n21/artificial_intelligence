@@ -1,6 +1,6 @@
 from typing import Set, List
-from ds.graph import Graph
-from ds.node import Node
+from python.ds.graph import Graph
+from python.ds.node import Node
 
 def depth_first_search(
     graph: Graph, start: str, goal: str,
