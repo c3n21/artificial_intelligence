@@ -1,6 +1,6 @@
-from .graph import Graph
-from .node import Node
-from .search import depth_first_search
+from ds.graph import Graph
+from ds.node import Node
+from algorithms.search.search import breadth_first_search, depth_first_search
 
 if __name__ == "__main__":
     start = Node("A")
@@ -23,4 +23,6 @@ if __name__ == "__main__":
     graph.addEdge(d, g, 4)
     graph.addEdge(g, e, 3)
 
-    print(depth_first_search(graph, start.label, e.label))
+    print(f"Graph = \n{graph}")
+    print(f"Path DFS = {depth_first_search(graph, start.label, e.label)}")
+    print(f"Path BFS = {breadth_first_search(graph, start.label, e.label)}")
